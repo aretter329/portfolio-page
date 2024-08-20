@@ -4,7 +4,7 @@ import ProjectPage from './views/ProjectPage.vue';
 import ThrowingPage from './views/ThrowingPage.vue';
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'HomePage',
     component: HomePage
   },
