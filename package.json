@@ -2,7 +2,7 @@
   "name": "portfolio-page",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://USERNAME.github.io/portfolio-page",
+  "homepage": "https://aretter329.github.io/portfolio-page",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
