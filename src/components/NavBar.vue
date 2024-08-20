@@ -5,10 +5,21 @@
   <nav class="navbar">
     <div class="navbar-container">
       <ul class="navbar-menu">
-        <li><router-link to="/"><div class="menu-item">Home</div></router-link></li>
-        <li><router-link to="/about"><div class="menu-item">About</div></router-link></li>
-        <li><router-link to="/projects"><div class="menu-item">Projects</div></router-link></li>
-        <li><router-link to="/throwing"><div class="menu-item">Throwing</div></router-link></li>
+        <li>
+          <router-link to="/home" exact-active-class="active" class="menu-item">
+            Home
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/projects" exact-active-class="active" class="menu-item">
+            Projects
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/throwing" exact-active-class="active" class="menu-item">
+            Throwing
+          </router-link>
+        </li>
       </ul>
     </div>
   </nav>
@@ -49,19 +60,23 @@
 .navbar-menu a {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
   transition: color 0.3s;
 }
 
-.menu-item{
+.menu-item {
   height: 35px; 
-  font-size: 25px;
+  font-size: 30px;
   transition: background-color 0.3s ease;
   padding: 5px; 
   border-radius: 4px;
 }
 
-.menu-item:hover{
-  background-color: #374785;
+.menu-item:hover {
+  background-color: var(--coral);
 }
-</style> 
+
+.menu-item.router-link-active {
+  background-color: var(--coral); /* Highlight active link */
+  color: white; /* Ensure text color is visible */
+}
+</style>

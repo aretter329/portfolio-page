@@ -1,24 +1,23 @@
-
 <script setup>
 import NavBar from './components/NavBar.vue';
-import ContactBar from './components/ContactBar.vue';
+import CircleBar from './components/CircleBar.vue'; // Import the new component
 
-  const beforeEnter = (el) => {
-    el.style.opacity = 0;
-  };
+const beforeEnter = (el) => {
+  el.style.opacity = 0;
+};
 
-  const enter = (el, done) => {
-    el.offsetHeight; // trigger reflow
-    el.style.transition = 'opacity 0.5s ease';
-    el.style.opacity = 1;
-    done();
-  };
+const enter = (el, done) => {
+  el.offsetHeight; // trigger reflow
+  el.style.transition = 'opacity 1s ease';
+  el.style.opacity = 1;
+  done();
+};
 
-  const leave = (el, done) => {
-    el.style.transition = 'opacity 0.5s ease';
-    el.style.opacity = 0;
-    done();
-  };
+const leave = (el, done) => {
+  el.style.transition = 'opacity 1s ease';
+  el.style.opacity = 0;
+  done();
+};
 </script>
 
 <template>
@@ -26,22 +25,24 @@ import ContactBar from './components/ContactBar.vue';
   <transition name="page" @before-enter="beforeEnter" @enter="enter" @leave="leave">
     <router-view></router-view> 
   </transition>
-  <ContactBar />
-    
-  
+  <CircleBar /> <!-- Include the circle bar component -->
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e52;
+  color: var(--white);
   margin-top: 60px;
-  
+  font-size: 20px;
 }
-*{
-  background-color: #a8d0e6
+
+body {
+  background-color: var(--gray);
 }
+
+
+
 </style>

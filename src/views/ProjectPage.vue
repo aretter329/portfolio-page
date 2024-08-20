@@ -1,47 +1,83 @@
 <template>
+    <div class = "gallery-container">
+    <div class="gallery">
 
-  <div id="main">
+        <a href='https://codepen.io/aretter29/pens/public' target="_blank">
+            <PictureFrame
+            :href="require('@/assets/codepen.png')"
+            caption="CodePen Portfolio"
+            />
+        </a>
 
+        <a :href="pdfUrl" target="_blank">
+            <PictureFrame
+            :href="require('@/assets/gol.png')"
+            caption="GoL Simulator"
+            />
+        </a>
 
-<div class="projects" id="projects">
-    <header class="div-head">Personal Projects</header>
-    <div class="grid-container">
-       
+        <a @click.prevent="loadHtmlContent">
+          <PictureFrame
+            :href="require('@/assets/dragongame.png')"
+            caption="Simple RPG"
+          />
+        </a>
         
-        <div class="grid-item" id="genetic">
-            <a class="project" href="retter_srcomp.pdf" target="_blank">
-                <img class='proj-img' src="gol.png"/>
-                <caption class="proj-caption">
-                    GoL Genetic Algorithm
-                </caption>
-            </a>
-        </div>
+        <!-- Optional: Display the HTML content in a hidden element -->
+        <div v-if="showHtmlContent" v-html="htmlContent" class="html-content"></div>
+    </div>
+    </div>
 
-        <div class="grid-item">
-            <a class="project" href="dragon.html">
-            <img class='proj-img' src="dragongame.png"/>
-            <caption class="proj-caption">
-                Simple RPG
-            </caption>
-            </a>
-        </div>
-        <div class="grid-item">
-            <a class="project" href="https://codepen.io/aretter29/pens/public" target="_blank">
-                <img class='proj-img' src="codepen.png"/>
-                <caption class="proj-caption">
-                    CodePen Portfolio
-                </caption>
-                </a>
-        </div>
-      </div> 
-</div>
-
-
-</div>
 </template>
 
-<script>
-export default {
-  name: 'ProjectPage'
-};
+<script setup>
+import PictureFrame from '@/components/PictureFrame.vue';
+import { ref } from 'vue';
+const pdfUrl = new URL('@/assets/retter_srcomp.pdf', import.meta.url).href;
+const htmlContent = ref('');
+const showHtmlContent = ref(false);
+
+async function loadHtmlContent() {
+  try {
+    const htmlFile = new URL('@/assets/dragon.html', import.meta.url).href;
+    const response = await fetch(htmlFile);
+    htmlContent.value = await response.text();
+    showHtmlContent.value = true;
+  } catch (error) {
+    console.error('Error loading HTML file:', error);
+  }
+}
 </script>
+
+<style scoped> 
+
+.gallery{
+  padding-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; 
+  justify-content: space-between; 
+  max-width: 900px;
+  align-items: center;
+}
+
+.gallery-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+}
+.html-content {
+  display: none; 
+}
+
+a{
+    max-width: 25%;
+    text-decoration: none; 
+    color: var(--white);
+}
+
+a:hover{
+  transform: translateY(-5px); /* Optional: Slight lift effect */
+}
+</style> 
