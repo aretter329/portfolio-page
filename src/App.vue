@@ -23,7 +23,7 @@ const leave = (el, done) => {
 <template>
   <NavBar></NavBar>
   <transition name="page" @before-enter="beforeEnter" @enter="enter" @leave="leave">
-    <router-view></router-view> 
+    <router-view />
   </transition>
   <CircleBar /> <!-- Include the circle bar component -->
 </template>
