@@ -6,7 +6,7 @@
     <div class="navbar-container">
       <ul class="navbar-menu">
         <li>
-          <router-link to="/" exact-active-class="active" class="menu-item">
+          <router-link to="/portfolio-page" exact-active-class="active" class="menu-item">
             Home
           </router-link>
         </li>
