@@ -24,5 +24,5 @@ module.exports = defineConfig({
       });
   },
   transpileDependencies: true,
-  publicPath: '/portfolio-page/'
+  publicPath: '/'
 });
